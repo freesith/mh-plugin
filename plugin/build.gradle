@@ -1,0 +1,23 @@
+apply plugin: 'groovy'
+apply plugin: 'com.github.dcendents.android-maven' //发布到JitPack
+
+group='com.github.freesith'
+
+repositories {
+    maven { url "https://maven.aliyun.com/repository/google"}
+    maven { url "https://maven.aliyun.com/repository/central"}
+    maven { url "https://maven.aliyun.com/repository/jcenter"}
+    google()
+    jcenter(){ url 'http://jcenter.bintray.com/'}
+    maven { url "https://jitpack.io" }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation 'com.android.tools.build:gradle:3.4.2'
+    implementation 'com.squareup:javapoet:1.8.0'
+    implementation 'com.alibaba:fastjson:1.2.61'
+
+}
