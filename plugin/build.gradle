@@ -19,6 +19,6 @@ dependencies {
     implementation 'com.android.tools.build:gradle:3.4.2'
     implementation 'com.squareup:javapoet:1.8.0'
     implementation 'com.alibaba:fastjson:1.2.61'
-    implementation files('libs/javassist.jar')
+    compile files('libs/javassist.jar')
 
 }
