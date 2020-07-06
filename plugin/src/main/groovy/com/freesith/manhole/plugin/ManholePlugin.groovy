@@ -124,7 +124,7 @@ class ManholePlugin extends Transform implements Plugin<Project> {
                 InputStream inputStream = jarFile.getInputStream(jarEntry)
                 if (checkClassFile(entryName)) {
                     jarOutputStream.putNextEntry(zipEntry)
-                    def bytes = OkHttpInject.inject(inputStream)
+                    def bytes = OkHttpInject.inject(jarInput.file.absolutePath, inputStream)
 //                    ClassReader classReader = new ClassReader(IOUtils.toByteArray(inputStream))
 //                    ClassWriter classWriter = new ClassWriter(classReader, ClassWriter.COMPUTE_MAXS)
 //                    ClassVisitor cv = new OkHttpVisitor(classWriter)

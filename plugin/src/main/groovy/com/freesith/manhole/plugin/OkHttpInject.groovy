@@ -1,13 +1,15 @@
 package com.freesith.manhole.plugin
 
 import javassist.ClassPool
-import javassist.CtClass
-import javassist.CtConstructor;
+import javassist.JarClassPath;
 
 class OkHttpInject {
 
-    static byte[] inject(InputStream inputStream) {
-        def clazz = ClassPool.default.makeClass(inputStream)
+    static byte[] inject(String jarPath, InputStream inputStream) {
+        def pool = ClassPool.default
+        def jarClassPath = new JarClassPath(jarPath)
+        pool.insertClassPath(jarClassPath)
+        def clazz = pool.makeClass(inputStream)
         if (clazz.frozen) {
             clazz.defrost()
         }
