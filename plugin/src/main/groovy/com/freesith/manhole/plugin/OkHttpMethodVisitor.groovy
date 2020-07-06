@@ -1,6 +1,6 @@
 package com.freesith.manhole.plugin
 
-import jdk.internal.org.objectweb.asm.Label
+import org.objectweb.asm.Label
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes
 
