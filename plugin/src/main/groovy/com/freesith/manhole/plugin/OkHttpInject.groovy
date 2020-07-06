@@ -4,18 +4,16 @@ import javassist.ClassPool
 import javassist.CtClass
 import javassist.CtConstructor;
 
-public class OkHttpInject {
-    static ClassPool classPool = ClassPool.default
+class OkHttpInject {
 
     static byte[] inject(InputStream inputStream) {
-        def clazz = classPool.makeClass(inputStream)
+        def clazz = ClassPool.default.makeClass(inputStream)
         if (clazz.frozen) {
             clazz.defrost()
         }
         def constructor = clazz.getConstructor('''(Lokhttp3/OkHttpClient$Builder;)V''')
         if (constructor != null) {
-            def code = '''
-        boolean addedMock = false;
+            def code = '''boolean addedMock = false;
         int size = $1.interceptors().size();
         if (size > 0) {
             for (okhttp3.Interceptor interceptor: $1.interceptors()) {
@@ -27,8 +25,7 @@ public class OkHttpInject {
         }
         if (!addedMock) {
             $1.addInterceptor(new com.freesith.manhole.MockInterceptor());
-        }
-'''
+        }'''
             constructor.insertBeforeBody(code)
             return clazz.toBytecode()
         }
