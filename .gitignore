@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+/.idea/jarRepositories.xml
+/.idea/markdown-navigator-enh.xml.xml
+/.idea/markdown-navigator.xml.xml
