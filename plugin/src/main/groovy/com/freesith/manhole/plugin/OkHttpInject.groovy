@@ -15,7 +15,8 @@ class OkHttpInject {
         }
         def constructor = clazz.getConstructor('''(Lokhttp3/OkHttpClient$Builder;)V''')
         if (constructor != null) {
-            def code = '''boolean addedMock = false;
+        def code = '''
+        boolean addedMock = false;
         int size = $1.interceptors().size();
         if (size > 0) {
             for (okhttp3.Interceptor interceptor: $1.interceptors()) {
@@ -28,8 +29,8 @@ class OkHttpInject {
         if (!addedMock) {
             $1.addInterceptor(new com.freesith.manhole.MockInterceptor());
         }'''
-            constructor.insertBeforeBody(code)
-            return clazz.toBytecode()
+        constructor.insertBeforeBody(code)
+        return clazz.toBytecode()
         }
     }
 }
