@@ -88,8 +88,6 @@ class OkHttpMethodVisitor extends MethodVisitor {
         Label l11 = new Label();
         mv.visitLabel(l11);
         mv.visitLocalVariable("interceptor", "Lokhttp3/Interceptor;", null, l5, l6, 4);
-        mv.visitLocalVariable("this", "Lokhttp3/OkHttpClient;", null, l0, l11, 0);
-        mv.visitLocalVariable("builder", "Lokhttp3/OkHttpClient$Builder;", null, l0, l11, 1);
         mv.visitLocalVariable("addedMock", "Z", null, l2, l11, 2);
         mv.visitMaxs(4, 5);
 
