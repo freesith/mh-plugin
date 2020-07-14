@@ -13,25 +13,17 @@ class OkHttpMethodVisitor extends MethodVisitor {
     @Override
     void visitCode() {
         super.visitCode()
-        System.out.println("111")
         mv.visitVarInsn(Opcodes.ALOAD, 1);
-        System.out.println("2222")
         mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, '''okhttp3/OkHttpClient$Builder''', "interceptors", "()Ljava/util/List;", false);
-        System.out.println("3333")
         mv.visitMethodInsn(Opcodes.INVOKEINTERFACE, "java/util/List", "size", "()I", true);
-        System.out.println("4444")
         mv.visitInsn(Opcodes.ICONST_1);
-        System.out.println("5555")
         mv.visitInsn(Opcodes.ISUB);
         mv.visitVarInsn(Opcodes.ISTORE, 2);
         Label l2 = new Label();
         mv.visitLabel(l2);
-        System.out.println("6666")
         mv.visitFrame(Opcodes.F_FULL, 3, ["okhttp3/OkHttpClient",'''okhttp3/OkHttpClient$Builder''',Opcodes.INTEGER] as Object[], 0, [] as Object[]);
-        System.out.println("7777")
         mv.visitVarInsn(Opcodes.ILOAD, 2);
         Label l3 = new Label();
-        System.out.println("222")
         mv.visitJumpInsn(Opcodes.IFLT, l3);
         Label l4 = new Label();
         mv.visitLabel(l4);
@@ -44,7 +36,6 @@ class OkHttpMethodVisitor extends MethodVisitor {
         mv.visitVarInsn(Opcodes.ASTORE, 3);
         Label l5 = new Label();
         mv.visitLabel(l5);
-        System.out.println("333")
         mv.visitLineNumber(10, l5);
         mv.visitVarInsn(Opcodes.ALOAD, 3);
         mv.visitTypeInsn(Opcodes.INSTANCEOF, "com/freesith/manhole/MockInterceptor");
@@ -52,7 +43,6 @@ class OkHttpMethodVisitor extends MethodVisitor {
         mv.visitJumpInsn(Opcodes.IFEQ, l6);
         Label l7 = new Label();
         mv.visitLabel(l7);
-        System.out.println("444")
         mv.visitLineNumber(11, l7);
         mv.visitVarInsn(Opcodes.ALOAD, 1);
         mv.visitMethodInsn(Opcodes.INVOKEVIRTUAL, '''okhttp3/OkHttpClient$Builder''', "interceptors", "()Ljava/util/List;", false);
